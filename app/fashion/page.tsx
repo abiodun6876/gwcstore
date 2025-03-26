@@ -1,105 +1,105 @@
 "use client";
 
 import { useState } from "react";
-import { Wine, ShoppingBag, Plus, Minus } from "lucide-react";
+import { Cake, ShoppingBag, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-const wines = [
+const pastries = [
   {
     id: 1,
-    name: "Sweet Red",
-    description: "Delightfully sweet red wine with berry notes",
-    price: "₦5,000 (750ml)",
-    bulkPrice: "₦150,000 (12 bottles)",
-    image: "/img/sweet red.jpg"
+    name: "Chocolate Croissant",
+    description: "Buttery flaky pastry with rich chocolate filling",
+    price: "$3.50",
+    bulkPrice: "$35.00 (10 pieces)",
+    image: "/img/croissant.jpg"
   },
   {
     id: 2,
-    name: "Moscato",
-    description: "Sweet Italian white wine with peach and orange blossom aromas",
-    price: "₦5,000 (750ml)",
-    bulkPrice: "₦150,000 (12 bottles)",
-    image: "/img/mascato.JPG"
+    name: "Red Velvet Cake",
+    description: "Moist red velvet cake with cream cheese frosting",
+    price: "$25.00 (slice)",
+    bulkPrice: "$80.00 (whole cake)",
+    image: "/img/red-velvet.jpg"
   },
   {
     id: 3,
-    name: "Cabernet Sauvignon",
-    description: "Full-bodied red with blackcurrant and spice notes",
-    price: "₦5,500 (750ml)",
-    bulkPrice: "₦165,000 (12 bottles)",
-    image: "/img/carbernet sauvignon.JPG"
+    name: "Meat Pie",
+    description: "Flaky pastry filled with seasoned ground beef",
+    price: "$4.00",
+    bulkPrice: "$36.00 (10 pieces)",
+    image: "/img/meat-pie.jpg"
   },
   {
     id: 4,
-    name: "Merlot",
-    description: "Soft, velvety red with plum and chocolate notes",
-    price: "₦5,500 (750ml)",
-    bulkPrice: "₦165,000 (12 bottles)",
-    image: "/img/marlot.JPG"
+    name: "Puff Puff",
+    description: "Traditional African fried dough balls",
+    price: "$2.50",
+    bulkPrice: "$20.00 (10 pieces)",
+    image: "/img/puff-puff.jpg"
   },
   {
     id: 5,
-    name: "Pinot Grigio",
-    description: "Crisp Italian white with citrus and melon flavors",
-    price: "₦5,000 (750ml)",
-    bulkPrice: "₦150,000 (12 bottles)",
-    image: "/img/Pinot.jpg"
+    name: "Chin Chin",
+    description: "Crunchy Nigerian snack cookies",
+    price: "$5.00 (pack)",
+    bulkPrice: "$40.00 (10 packs)",
+    image: "/img/chin-chin.jpg"
   },
   {
     id: 6,
-    name: "whitezinfandel california",
-    description: "Buttery white with vanilla and tropical fruit notes",
-    price: "₦12,500 (750ml)",
-    bulkPrice: "₦150,000 (12 bottles)",
-    image: "/img/whitezinfandel california.JPG"
+    name: "Doughnut",
+    description: "Classic glazed doughnut",
+    price: "$2.00",
+    bulkPrice: "$15.00 (10 pieces)",
+    image: "/img/doughnut.jpg"
   }
 ];
 
-export default function WinesPage() {
+export default function PastriesPage() {
   const [cart, setCart] = useState<{id: number; quantity: number}[]>([]);
 
-  const addToCart = (wineId: number) => {
+  const addToCart = (itemId: number) => {
     setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.id === wineId);
+      const existingItem = prevCart.find(item => item.id === itemId);
       if (existingItem) {
         return prevCart.map(item =>
-          item.id === wineId ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevCart, { id: wineId, quantity: 1 }];
+      return [...prevCart, { id: itemId, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (wineId: number) => {
+  const removeFromCart = (itemId: number) => {
     setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.id === wineId);
+      const existingItem = prevCart.find(item => item.id === itemId);
       if (existingItem?.quantity === 1) {
-        return prevCart.filter(item => item.id !== wineId);
+        return prevCart.filter(item => item.id !== itemId);
       }
       return prevCart.map(item =>
-        item.id === wineId ? { ...item, quantity: item.quantity - 1 } : item
+        item.id === itemId ? { ...item, quantity: item.quantity - 1 } : item
       );
     });
   };
 
   const handleCheckout = () => {
     const cartItems = cart.map(item => {
-      const wine = wines.find(w => w.id === item.id);
-      return `${wine?.name} (${item.quantity}x) - ${wine?.price.split(" ")[0]} each`;
+      const pastry = pastries.find(p => p.id === item.id);
+      return `${pastry?.name} (${item.quantity}x) - ${pastry?.price} each`;
     }).join("\n");
 
     const total = cart.reduce((sum, item) => {
-      const wine = wines.find(w => w.id === item.id);
-      const priceNumber = wine ? parseInt(wine.price.replace(/[^0-9]/g, '')) || 0 : 0;
+      const pastry = pastries.find(p => p.id === item.id);
+      const priceNumber = pastry ? parseFloat(pastry.price.replace(/[^0-9.]/g, '')) || 0 : 0;
       return sum + priceNumber * item.quantity;
     }, 0);
 
     const message = encodeURIComponent(
-      `Hello Fox Brook Wine,\n\nI would like to order:\n${cartItems}\n\nTotal: ₦${total.toLocaleString()}\n\nPlease provide payment details and delivery information.`
+      `Hello GCW Store,\n\nI would like to order:\n${cartItems}\n\nTotal: $${total.toFixed(2)}\n\nPlease provide payment details and pickup/delivery information.`
     );
 
-    window.open(`https://wa.me/2348101023889?text=${message}`, '_blank');
+    window.open(`https://wa.me/19059227715?text=${message}`, '_blank');
   };
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -109,11 +109,11 @@ export default function WinesPage() {
       {/* Hero Header */}
       <div className="text-center mb-16">
         <div className="inline-flex items-center justify-center mb-6">
-          <Wine className="h-10 w-10 text-red-600 mr-3" />
-          <h1 className="text-4xl font-bold tracking-tight">Premium Wine Collection</h1>
+          <Cake className="h-10 w-10 text-amber-600 mr-3" />
+          <h1 className="text-4xl font-bold tracking-tight">Delicious Pastries</h1>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Discover our exquisite selection of fine wines from around the world
+          Freshly baked pastries and sweet treats made with premium ingredients
         </p>
       </div>
 
@@ -130,19 +130,19 @@ export default function WinesPage() {
         </div>
       )}
 
-      {/* Wine Grid */}
+      {/* Pastries Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {wines.map((wine) => {
-          const cartItem = cart.find(item => item.id === wine.id);
+        {pastries.map((pastry) => {
+          const cartItem = cart.find(item => item.id === pastry.id);
           const quantity = cartItem?.quantity || 0;
           
           return (
-            <div key={wine.id} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-              {/* Wine Image */}
+            <div key={pastry.id} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
+              {/* Pastry Image */}
               <div className="relative h-80 overflow-hidden">
                 <Image
-                  src={wine.image}
-                  alt={wine.name}
+                  src={pastry.image}
+                  alt={pastry.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -155,21 +155,21 @@ export default function WinesPage() {
                 )}
               </div>
 
-              {/* Wine Details */}
+              {/* Pastry Details */}
               <div className="p-6">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-gray-900">{wine.name}</h3>
-                  <span className="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded">
-                    {wine.price.split(" ")[1]}
+                  <h3 className="text-xl font-bold text-gray-900">{pastry.name}</h3>
+                  <span className="bg-amber-100 text-amber-800 text-sm font-medium px-2.5 py-0.5 rounded">
+                    Fresh
                   </span>
                 </div>
                 
-                <p className="text-gray-600 mb-4">{wine.description}</p>
+                <p className="text-gray-600 mb-4">{pastry.description}</p>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-gray-900">{wine.price}</span>
-                    <span className="text-sm text-gray-500">{wine.bulkPrice}</span>
+                    <span className="text-lg font-bold text-gray-900">{pastry.price}</span>
+                    <span className="text-sm text-gray-500">{pastry.bulkPrice}</span>
                   </div>
                   
                   <div className="flex items-center gap-2">
@@ -178,8 +178,8 @@ export default function WinesPage() {
                         <Button 
                           variant="outline" 
                           size="sm" 
-                          onClick={() => removeFromCart(wine.id)}
-                          className="border-red-600 text-red-600 hover:bg-red-50"
+                          onClick={() => removeFromCart(pastry.id)}
+                          className="border-amber-600 text-amber-600 hover:bg-amber-50"
                         >
                           <Minus className="h-4 w-4" />
                         </Button>
@@ -187,16 +187,16 @@ export default function WinesPage() {
                         <Button 
                           variant="outline" 
                           size="sm" 
-                          onClick={() => addToCart(wine.id)}
-                          className="border-red-600 text-red-600 hover:bg-red-50"
+                          onClick={() => addToCart(pastry.id)}
+                          className="border-amber-600 text-amber-600 hover:bg-amber-50"
                         >
                           <Plus className="h-4 w-4" />
                         </Button>
                       </>
                     ) : (
                       <Button
-                        onClick={() => addToCart(wine.id)}
-                        className="w-full bg-red-600 hover:bg-red-700 text-white"
+                        onClick={() => addToCart(pastry.id)}
+                        className="w-full bg-amber-600 hover:bg-amber-700 text-white"
                       >
                         Add to Cart
                       </Button>
@@ -211,16 +211,16 @@ export default function WinesPage() {
 
       {/* Footer CTA */}
       <div className="mt-20 text-center bg-gray-50 rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-4">Special Offers for Bulk Orders</h2>
+        <h2 className="text-2xl font-bold mb-4">Special Orders & Catering</h2>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Contact us directly for exclusive deals on case purchases and corporate gifting.
+          Contact us for custom pastry orders, events, and bulk purchases.
         </p>
         <Button
           asChild
           className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
         >
           <a 
-            href="https://wa.me/2348101023889"
+            href="https://wa.me/19059227715"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -4,51 +4,82 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-semibold mb-4">About Fox Brook Wine</h3>
+            <h3 className="font-semibold mb-4">About GCW Store</h3>
             <p className="text-sm text-muted-foreground">
-              Premium wine selection in Lagos, Nigeria. We supply the best wines to retail stores, hotels, weddings, and corporate events.
+              Your premier destination for delicious pastries, stylish fashion, and authentic African foods. 
+              We serve retail customers, events, and corporate clients with quality products.
             </p>
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Contact Us</h3>
+            <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="tel:08101023889" className="text-muted-foreground hover:text-red-600">
-                  08101023889
+                <a href="/pastries" className="text-muted-foreground hover:text-red-600">
+                  Pastries
                 </a>
               </li>
               <li>
-                <a href="tel:09079849145" className="text-muted-foreground hover:text-red-600">
-                  09079849145
+                <a href="/fashion" className="text-muted-foreground hover:text-red-600">
+                  Fashion
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/foxbrookwine/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-red-600">
-                  @foxbrookwine
+                <a href="/african-foods" className="text-muted-foreground hover:text-red-600">
+                  African Foods
                 </a>
               </li>
             </ul>
           </div>
+
+          <div>
+            <h3 className="font-semibold mb-4">Contact Us</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="tel:9059227715" className="text-muted-foreground hover:text-red-600">
+                  (905) 922-7715
+                </a>
+              </li>
+              <li>
+                <a href="mailto:gbemisolaseli@gmail.com" className="text-muted-foreground hover:text-red-600">
+                  gbemisolaseli@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-red-600">
+                  @gcwstore
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <div>
             <h3 className="font-semibold mb-4">Visit Us</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Shop A3 631/652 HFP Eastline Shopping Complex, Lekki Ajah Lagos
+              Hamilton, Ontario, Canada
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/foxbrookwine/"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-red-600"
               >
                 Instagram
               </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-red-600"
+              >
+                Facebook
+              </a>
             </div>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Fox Brook Wine. All rights reserved.
+          © {new Date().getFullYear()} GCW Store. All rights reserved.
         </div>
       </div>
     </footer>
