@@ -9,26 +9,7 @@ export default function Footer() {
               Premium wine selection in Lagos, Nigeria. We supply the best wines to retail stores, hotels, weddings, and corporate events.
             </p>
           </div>
-          <div>
-            <h3 className="font-semibold mb-4">Our Wines</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="/wines/moscato" className="text-muted-foreground hover:text-red-600">
-                  Moscato
-                </a>
-              </li>
-              <li>
-                <a href="/wines/merlot" className="text-muted-foreground hover:text-red-600">
-                  Merlot
-                </a>
-              </li>
-              <li>
-                <a href="/wines/cabernet" className="text-muted-foreground hover:text-red-600">
-                  Cabernet Sauvignon
-                </a>
-              </li>
-            </ul>
-          </div>
+          
           <div>
             <h3 className="font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-sm">
