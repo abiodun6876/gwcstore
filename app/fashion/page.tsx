@@ -1,6 +1,7 @@
 "use client";
 
 import { Shirt, ShoppingBag, Ruler, Scissors, Phone } from "lucide-react";
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -9,6 +10,7 @@ import Image from "next/image";
 
 export default function FashionPage() {
 
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const imagePaths = [
         "/img/c1.jpeg",
         "/img/c2.jpeg",
@@ -93,11 +95,14 @@ export default function FashionPage() {
         </div>
       </div>
 
-      {/* Gallery Placeholder */}
-   
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {/* Gallery Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {imagePaths.map((src, index) => (
-          <div key={index} className="group relative aspect-square overflow-hidden rounded-lg">
+          <div 
+            key={index} 
+            className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
+            onClick={() => setSelectedImage(src)}
+          >
             <Image
               src={src}
               alt={`Fashion design ${index + 1}`}
@@ -106,16 +111,46 @@ export default function FashionPage() {
               sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
             />
             <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <button className="bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 shadow-lg transition-all">
+              <div className="bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 shadow-lg transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                  <line x1="4" y1="22" x2="4" y2="15"/>
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                 </svg>
-              </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Full-size Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative w-full max-w-4xl max-h-[90vh]">
+            <Image
+              src={selectedImage}
+              alt="Full size fashion design"
+              width={1200}
+              height={1200}
+              className="object-contain w-full h-full"
+            />
+            <button 
+              className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 backdrop-blur-sm transition-all"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>)};
+   
 
 
       {/* Contact CTA */}
