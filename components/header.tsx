@@ -92,18 +92,18 @@ export default function Header() {
               </Button>
              {/* Mobile Menu Button (visible on mobile) */}
              <Button 
-              variant="ghost" 
-              size="icon" 
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5 text-amber-600" />
-              ) : (
-                <Menu className="h-5 w-5 text-amber-600" />
-              )}
-              <span className="sr-only">{isMobileMenuOpen ? "Close menu" : "Open menu"}</span>
-            </Button>
+  variant="ghost" 
+  size="lg"
+  className="md:hidden p-2"
+  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+>
+  {isMobileMenuOpen ? (
+    <X className="h-6 w-6 text-amber-700 dark:text-amber-400" />
+  ) : (
+    <Menu className="h-6 w-6 text-amber-600" />
+  )}
+  <span className="sr-only">{isMobileMenuOpen ? "Close menu" : "Open menu"}</span>
+</Button>
             </div>
           </div>
         </div>
