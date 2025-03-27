@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       
-      {/* Business Focus Areas */}
+     {/* Business Focus Areas */}
 <section className="py-16 container mx-auto px-4">
   <h2 className="text-3xl font-bold text-center mb-12">Our Specialties</h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -139,28 +139,27 @@ export default function Home() {
         description: "Traditional baked goods and cooking services for events",
         icon: <Cake className="h-8 w-8 text-amber-600" />,
         image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-        link: "/pastries"
+        link: "/pastries",
+        buttonText: "View Pastries"
       },
       {
         title: "Fashion Design",
         description: "Custom African apparel and tailoring services",
         icon: <Shirt className="h-8 w-8 text-amber-600" />,
         image: "/img/ankara.jpeg",
-        link: "/fashion"
+        link: "/fashion",
+        buttonText: "Browse Fashion"
       },
       {
         title: "African Store Items",
         description: "Imported groceries and cultural goods",
         icon: <Globe className="h-8 w-8 text-amber-600" />,
         image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-        link: "/pastries"
+        link: "/pastries",
+        buttonText: "Shop Goods"
       }
     ].map((service, index) => (
-      <Link 
-        key={index} 
-        href={service.link}
-        className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-      >
+      <div key={index} className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
         <div className="relative h-48 w-full">
           <Image
             src={service.image}
@@ -173,12 +172,18 @@ export default function Home() {
           <div className="flex justify-center mb-4">
             {service.icon}
           </div>
-          <h3 className="text-xl font-semibold mb-2 group-hover:text-amber-600 transition-colors">
-            {service.title}
-          </h3>
-          <p className="text-gray-600">{service.description}</p>
+          <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+          <p className="text-gray-600 mb-4">{service.description}</p>
+          <Button
+            asChild
+            className="bg-amber-600 hover:bg-amber-700 text-white"
+          >
+            <Link href={service.link}>
+              {service.buttonText}
+            </Link>
+          </Button>
         </div>
-      </Link>
+      </div>
     ))}
   </div>
 </section>
