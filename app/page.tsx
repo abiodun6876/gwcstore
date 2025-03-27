@@ -11,7 +11,7 @@ const slides = [
     title: "GCW African Delights",
     subtitle: "Authentic African Cuisine, Fashion & Goods in Hamilton, ON",
     cta: "Shop Now",
-    ctaLink: "/african-foods"
+    ctaLink: "/pastries"
   },
   {
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80",
@@ -21,7 +21,7 @@ const slides = [
     ctaLink: "/pastries"
   },
   {
-    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80",
+    image: "/img/fashion.jpeg",
     title: "Handcrafted African Fashion",
     subtitle: "Custom designs for every occasion",
     cta: "Browse Collection",
@@ -32,7 +32,7 @@ const slides = [
     title: "African Grocery Essentials",
     subtitle: "All your favorite ingredients from back home",
     cta: "Shop Goods",
-    ctaLink: "/african-foods"
+    ctaLink: "/pastries"
   }
 ];
 
@@ -128,50 +128,60 @@ export default function Home() {
         </div>
       </section>
 
+      
       {/* Business Focus Areas */}
-      <section className="py-16 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Specialties</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "African Pastries & Cooking",
-              description: "Traditional baked goods and cooking services for events",
-              icon: <Cake className="h-8 w-8 text-amber-600" />,
-              image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-              title: "Fashion Design",
-              description: "Custom African apparel and tailoring services",
-              icon: <Shirt className="h-8 w-8 text-amber-600" />,
-              image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            },
-            {
-              title: "African Store Items",
-              description: "Imported groceries and cultural goods",
-              icon: <Globe className="h-8 w-8 text-amber-600" />,
-              image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-            }
-          ].map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative h-48 w-full">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <div className="flex justify-center mb-4">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            </div>
-          ))}
+<section className="py-16 container mx-auto px-4">
+  <h2 className="text-3xl font-bold text-center mb-12">Our Specialties</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {[
+      {
+        title: "African Pastries & Cooking",
+        description: "Traditional baked goods and cooking services for events",
+        icon: <Cake className="h-8 w-8 text-amber-600" />,
+        image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        link: "/pastries"
+      },
+      {
+        title: "Fashion Design",
+        description: "Custom African apparel and tailoring services",
+        icon: <Shirt className="h-8 w-8 text-amber-600" />,
+        image: "/img/ankara.jpeg",
+        link: "/fashion"
+      },
+      {
+        title: "African Store Items",
+        description: "Imported groceries and cultural goods",
+        icon: <Globe className="h-8 w-8 text-amber-600" />,
+        image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        link: "/pastries"
+      }
+    ].map((service, index) => (
+      <Link 
+        key={index} 
+        href={service.link}
+        className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+      >
+        <div className="relative h-48 w-full">
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover"
+          />
         </div>
-      </section>
+        <div className="p-6 text-center">
+          <div className="flex justify-center mb-4">
+            {service.icon}
+          </div>
+          <h3 className="text-xl font-semibold mb-2 group-hover:text-amber-600 transition-colors">
+            {service.title}
+          </h3>
+          <p className="text-gray-600">{service.description}</p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
 
       {/* Contact Section */}
       <section className="py-16 bg-white">

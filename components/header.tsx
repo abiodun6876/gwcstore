@@ -44,9 +44,9 @@ export default function Header() {
               </div>
             </Link>
             <Link 
-              href="/african-foods"
+              href="/pastries"
               className={`text-sm font-medium transition-colors hover:text-amber-600 ${
-                pathname === "/african-foods" ? "text-amber-600" : "text-gray-700 dark:text-gray-300"
+                pathname === "/pastries" ? "text-amber-600" : "text-gray-700 dark:text-gray-300"
               }`}
             >
               <div className="flex items-center gap-1">
