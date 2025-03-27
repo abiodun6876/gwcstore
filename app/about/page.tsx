@@ -38,7 +38,8 @@ export default function AboutPage() {
             <li className="flex items-start">
               <Heart className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
               <span className="text-gray-600">
-                <strong className="text-gray-800">Authenticity:</strong> We source directly from African producers and use traditional recipes
+                <strong className="text-gray-800">Authenticity:</strong>
+                 We source directly from African producers and use traditional recipes
               </span>
             </li>
             <li className="flex items-start">
