@@ -4,7 +4,25 @@ import { Shirt, ShoppingBag, Ruler, Scissors, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+
+
+
 export default function FashionPage() {
+
+    const imagePaths = [
+        "/img/c1.jpeg",
+        "/img/c2.jpeg",
+        "/img/c3.jpeg",
+        "/img/c4.jpeg",
+        "/img/c5.jpeg",
+        "/img/c6.jpeg",
+        "/img/c7.jpeg",
+         "/img/c8.jpeg",
+         "/img/c9.jpeg",
+         "/img/c10.jpeg",
+          "/img/c11.jpeg"
+      ];
+
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Hero Header */}
@@ -76,16 +94,29 @@ export default function FashionPage() {
       </div>
 
       {/* Gallery Placeholder */}
-      <div className="mb-20 text-center">
-        <h2 className="text-2xl font-bold mb-8">Our Recent Designs</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {[...Array(6)].map((_, index) => (
-            <div key={index} className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-              <Shirt className="h-12 w-12 text-gray-400" />
+   
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {imagePaths.map((src, index) => (
+          <div key={index} className="group relative aspect-square overflow-hidden rounded-lg">
+            <Image
+              src={src}
+              alt={`Fashion design ${index + 1}`}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+            />
+            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <button className="bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 shadow-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                  <line x1="4" y1="22" x2="4" y2="15"/>
+                </svg>
+              </button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
 
       {/* Contact CTA */}
       <div className="mt-20 text-center bg-amber-50 rounded-xl p-8">

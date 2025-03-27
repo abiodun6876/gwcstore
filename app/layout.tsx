@@ -9,6 +9,7 @@ import Footer from '@/components/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://gwcstore.netlify.app'), // Add this line
   title: 'GCW Store - Authentic African Products',
   description: 'We\'re proud to serve both the African community and those who appreciate authentic cultural products, offering carefully curated pastries, clothing, and foods that remind our customers of home.',
   openGraph: {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     url: 'https://gwcstore.netlify.app',
     images: [
       {
-        url: '/img/gcw-store-social.jpg',
+        url: '/img/logo.png',
         width: 1200,
         height: 630,
         alt: 'GCW Store - Authentic African Products',
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GCW Store - Authentic African Products',
     description: 'We\'re proud to serve both the African community and those who appreciate authentic cultural products, offering carefully curated pastries, clothing, and foods that remind our customers of home.',
-    images: ['/img/gcw-store-social.jpg'],
+    images: ['/img/logo.png'],
   },
 };
 
