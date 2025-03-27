@@ -9,8 +9,28 @@ import Footer from '@/components/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Fox Brook Wine Store',
-  description: 'Premium wines delivered to your doorstep in Lagos, Nigeria',
+  title: 'GCW Store - Authentic African Products',
+  description: 'We\'re proud to serve both the African community and those who appreciate authentic cultural products, offering carefully curated pastries, clothing, and foods that remind our customers of home.',
+  openGraph: {
+    title: 'GCW Store - Authentic African Products',
+    description: 'We\'re proud to serve both the African community and those who appreciate authentic cultural products, offering carefully curated pastries, clothing, and foods that remind our customers of home.',
+    url: 'https://gwcstore.netlify.app',
+    images: [
+      {
+        url: '/img/gcw-store-social.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'GCW Store - Authentic African Products',
+      },
+    ],
+    siteName: 'GCW Store',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GCW Store - Authentic African Products',
+    description: 'We\'re proud to serve both the African community and those who appreciate authentic cultural products, offering carefully curated pastries, clothing, and foods that remind our customers of home.',
+    images: ['/img/gcw-store-social.jpg'],
+  },
 };
 
 export default function RootLayout({
