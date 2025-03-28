@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Phone, MapPin, Mail, Cake, Shirt, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, MapPin, Mail, Cake, Shirt, Globe, ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
 import Image from "next/image";
 
 const slides = [
@@ -126,67 +126,74 @@ export default function Home() {
             />
           ))}
         </div>
+
+        {/* Scroll Down Indicator */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+          <div className="flex flex-col items-center">
+            <span className="text-white text-sm mb-1">Scroll Down</span>
+            <ArrowDown className="h-6 w-6 text-white" />
+          </div>
+        </div>
       </section>
 
-      
-     {/* Business Focus Areas */}
-<section className="py-16 container mx-auto px-4">
-  <h2 className="text-3xl font-bold text-center mb-12">Our Specialties</h2>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-    {[
-      {
-        title: "African Pastries & Cooking",
-        description: "Traditional baked goods and cooking services for events",
-        icon: <Cake className="h-8 w-8 text-amber-600" />,
-        image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-        link: "/pastries",
-        buttonText: "View Pastries"
-      },
-      {
-        title: "Fashion Design",
-        description: "Custom African apparel and tailoring services",
-        icon: <Shirt className="h-8 w-8 text-amber-600" />,
-        image: "/img/ankara.jpeg",
-        link: "/fashion",
-        buttonText: "Browse Fashion"
-      },
-      {
-        title: "African Store Items",
-        description: "Imported groceries and cultural goods",
-        icon: <Globe className="h-8 w-8 text-amber-600" />,
-        image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-        link: "/pastries",
-        buttonText: "Shop Goods"
-      }
-    ].map((service, index) => (
-      <div key={index} className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-        <div className="relative h-48 w-full">
-          <Image
-            src={service.image}
-            alt={service.title}
-            fill
-            className="object-cover"
-          />
+      {/* Business Focus Areas */}
+      <section className="py-16 container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12">Our Specialties</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "African Pastries & Cooking",
+              description: "Traditional baked goods and cooking services for events",
+              icon: <Cake className="h-8 w-8 text-amber-600" />,
+              image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+              link: "/pastries",
+              buttonText: "View Pastries"
+            },
+            {
+              title: "Fashion Design",
+              description: "Custom African apparel and tailoring services",
+              icon: <Shirt className="h-8 w-8 text-amber-600" />,
+              image: "/img/ankara.jpeg",
+              link: "/fashion",
+              buttonText: "Browse Fashion"
+            },
+            {
+              title: "African Store Items",
+              description: "Imported groceries and cultural goods",
+              icon: <Globe className="h-8 w-8 text-amber-600" />,
+              image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+              link: "/pastries",
+              buttonText: "Shop Goods"
+            }
+          ].map((service, index) => (
+            <div key={index} className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="relative h-48 w-full">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <div className="flex justify-center mb-4">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <Button
+                  asChild
+                  className="bg-amber-600 hover:bg-amber-700 text-white"
+                >
+                  <Link href={service.link}>
+                    {service.buttonText}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="p-6 text-center">
-          <div className="flex justify-center mb-4">
-            {service.icon}
-          </div>
-          <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-          <p className="text-gray-600 mb-4">{service.description}</p>
-          <Button
-            asChild
-            className="bg-amber-600 hover:bg-amber-700 text-white"
-          >
-            <Link href={service.link}>
-              {service.buttonText}
-            </Link>
-          </Button>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
+      </section>
 
       {/* Contact Section */}
       <section className="py-16 bg-white">
