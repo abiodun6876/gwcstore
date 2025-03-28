@@ -8,37 +8,52 @@ import Image from "next/image";
 
 
 const foods = [
-  {
-    id: 1,
-    name: "Okro Soup",
-     description: "Nigerian okra soup with seafood options",
-    price: "$20 per bowl",
-    bulkPrice: "Best served with pounded yam",
-    image: "/img/okro-soup.jpeg"
-  },
-  {
-    id: 2,
-    name: "Egusi Soup",
-    description: "Rich melon seed soup with assorted meats",
-    price: "$20 per bowl",
-    bulkPrice: "Comes with swallow of choice",
-    image: "/img/Egusi Soup.jpeg"
-  },
-  {
-    id: 3,
-    name: "Jollof Rice",
-    description: "Flavorful West African spicy rice",
-    price: "$50 (small tray)",
-    image: "/img/jollof-rice.jpeg"
-  },
-  {
-    id: 4,
-    name: "Fried Rice",
-     description: "Well Steamed with spices",
-    price: "$8.00(small tray)",
-    image: "/img/fried-rice.jpeg"
-  }
-];
+    {
+      id: 1,
+      name: "Okro Soup",
+      description: "Nigerian okra soup with seafood options",
+      price: "$20 per bowl",
+      bulkPrice: "Best served with pounded yam",
+      image: "/img/okro-soup.jpeg"
+    },
+    {
+      id: 2,
+      name: "Egusi Soup",
+      description: "Rich melon seed soup with assorted meats",
+      price: "$20 per bowl",
+      bulkPrice: "Comes with swallow of choice",
+      image: "/img/Egusi Soup.jpeg"
+    },
+    {
+      id: 3,
+      name: "Jollof Rice",
+      description: "Flavorful West African spicy rice",
+      price: "$50 (small tray)",
+      image: "/img/jollof-rice.jpeg"
+    },
+    {
+      id: 4,
+      name: "Fried Rice",
+      description: "Well Steamed with spices",
+      price: "$8.00(small tray)",
+      image: "/img/fried-rice.jpeg"
+    },
+    {
+      id: 5,
+      name: "Palm Oil (Carton)",
+      description: "Premium quality red palm oil",
+      price: "$80 per carton",
+      image: "/img/palm-oil.jpeg"
+    },
+    {
+      id: 6,
+      name: "Indomie Noodles",
+      description: "Popular instant noodles",
+      price: "$19 per carton",
+      bulkPrice: "1 carton contains multiple packs",
+      image: "/img/indomie.jpeg"
+    }
+  ];
 
 export default function AfricanFoodsPage() {
   const [cart, setCart] = useState<{id: number; quantity: number}[]>([]);
