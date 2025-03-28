@@ -56,43 +56,6 @@ const pastries = [
   }
 ];
 
-const riceMeals = [
-  {
-    id: 7,
-    name: "Jollof Rice",
-    description: "Flavorful West African spicy rice",
-    price: "$50 (small tray)",
-    bulkPrice: "$80 (medium) | $100 (large)",
-    image: "/img/jollof-rice.jpeg"
-  },
-  {
-    id: 8,
-    name: "Fried Rice",
-    description: "African-style fried rice with vegetables",
-    price: "$50 (small tray)",
-    bulkPrice: "$80 (medium) | $100 (large)",
-    image: "/img/fried-rice.jpeg"
-  }
-];
-
-const soups = [
-  {
-    id: 9,
-    name: "Egusi Soup",
-    description: "Rich melon seed soup with assorted meats",
-    price: "$20 per bowl",
-    bulkPrice: "Comes with swallow of choice",
-    image: "/img/Egusi Soup.jpeg"
-  },
-  {
-    id: 10,
-    name: "Okro Soup",
-    description: "Nigerian okra soup with seafood options",
-    price: "$20 per bowl",
-    bulkPrice: "Best served with pounded yam",
-    image: "/img/okro-soup.jpeg"
-  }
-];
 
 export default function PastriesPage() {
   const [cart, setCart] = useState<{id: number; quantity: number}[]>([]);
@@ -122,7 +85,7 @@ export default function PastriesPage() {
   };
 
   const handleCheckout = () => {
-    const allProducts = [...pastries, ...riceMeals, ...soups];
+    const allProducts = [...pastries];
     const cartItems = cart.map(item => {
       const product = allProducts.find(p => p.id === item.id);
       return `${product?.name} (${item.quantity}x) - ${product?.price}`;
@@ -254,27 +217,8 @@ export default function PastriesPage() {
         </div>
       </section>
 
-      {/* Rice Meals Section */}
-      <section className="mb-16">
-        <div className="flex items-center mb-8">
-          <Utensils className="h-8 w-8 text-amber-600 mr-3" />
-          <h2 className="text-2xl font-bold">Rice Meals</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {riceMeals.map(renderProductCard)}
-        </div>
-      </section>
+    
 
-      {/* Soups Section */}
-      <section className="mb-16">
-        <div className="flex items-center mb-8">
-          <Soup className="h-8 w-8 text-amber-600 mr-3" />
-          <h2 className="text-2xl font-bold">Soups</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {soups.map(renderProductCard)}
-        </div>
-      </section>
 
       {/* Footer CTA */}
       <div className="mt-20 text-center bg-gray-50 rounded-xl p-8">

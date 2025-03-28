@@ -5,54 +5,38 @@ import { Utensils, ShoppingBag, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+
+
 const foods = [
   {
     id: 1,
-    name: "Jollof Rice",
-    description: "Classic West African spicy tomato rice",
-    price: "$12.00",
-    serves: "Serves 2-3",
-    image: "/img/jollof.jpg"
+    name: "Okro Soup",
+     description: "Nigerian okra soup with seafood options",
+    price: "$20 per bowl",
+    bulkPrice: "Best served with pounded yam",
+    image: "/img/okro-soup.jpeg"
   },
   {
     id: 2,
-    name: "Pounded Yam & Egusi",
-    description: "Traditional Nigerian dish with melon seed soup",
-    price: "$15.00",
-    serves: "Serves 2",
-    image: "/img/pounded-yam.jpg"
+    name: "Egusi Soup",
+    description: "Rich melon seed soup with assorted meats",
+    price: "$20 per bowl",
+    bulkPrice: "Comes with swallow of choice",
+    image: "/img/Egusi Soup.jpeg"
   },
   {
     id: 3,
-    name: "Suya",
-    description: "Spicy skewered grilled meat with peanut spice",
-    price: "$10.00 (6 pieces)",
-    serves: "Appetizer",
-    image: "/img/suya.jpg"
+    name: "Jollof Rice",
+    description: "Flavorful West African spicy rice",
+    price: "$50 (small tray)",
+    image: "/img/jollof-rice.jpeg"
   },
   {
     id: 4,
-    name: "Moin Moin",
-    description: "Steamed bean pudding with spices",
-    price: "$8.00",
-    serves: "4 pieces",
-    image: "/img/moin-moin.jpg"
-  },
-  {
-    id: 5,
-    name: "Chin Chin",
-    description: "Crunchy Nigerian snack cookies",
-    price: "$5.00 (pack)",
-    serves: "Snack",
-    image: "/img/chin-chin.jpg"
-  },
-  {
-    id: 6,
-    name: "Zobo Drink",
-    description: "Refreshing hibiscus tea with ginger",
-    price: "$4.00 (bottle)",
-    serves: "500ml",
-    image: "/img/zobo.jpg"
+    name: "Fried Rice",
+     description: "Well Steamed with spices",
+    price: "$8.00(small tray)",
+    image: "/img/fried-rice.jpeg"
   }
 ];
 
@@ -160,7 +144,7 @@ export default function AfricanFoodsPage() {
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-xl font-bold text-gray-900">{food.name}</h3>
                   <span className="bg-amber-100 text-amber-800 text-sm font-medium px-2.5 py-0.5 rounded">
-                    {food.serves}
+                    {food. description}
                   </span>
                 </div>
                 
