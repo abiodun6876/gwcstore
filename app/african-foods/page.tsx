@@ -52,6 +52,22 @@ const foods = [
       price: "$19 per carton",
       bulkPrice: "1 carton contains multiple packs",
       image: "/img/indomie.jpeg"
+    },
+    {
+      id: 7,
+      name: "Golden morn",
+      description: "Your Favourite Golden morn",
+      price: "$70 per carton",
+      bulkPrice: "1 carton contains multiple packs",
+      image: "/img/Golden-morn.jpeg"
+    },
+    {
+      id: 8,
+      name: "Milo",
+      description: "Perfect For Every Season",
+      price: "$85 per carton",
+      bulkPrice: "1 carton contains multiple packs",
+      image: "/img/Milo.jpeg"
     }
   ];
 
