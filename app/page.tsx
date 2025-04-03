@@ -6,13 +6,7 @@ import { Phone, MapPin, Mail, Cake, Shirt, Globe, ChevronLeft, ChevronRight, Arr
 import Image from "next/image";
 
 const slides = [
-  {
-    image: "https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80",
-    title: "GCW African Delights",
-    subtitle: "Authentic African Cuisine, Fashion & Goods in Hamilton, ON",
-    cta: "Shop Now",
-    ctaLink: "/pastries"
-  },
+ 
   {
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80",
     title: "Traditional African Pastries",
@@ -32,7 +26,7 @@ const slides = [
     title: "African Grocery Essentials",
     subtitle: "All your favorite ingredients from back home",
     cta: "Shop Goods",
-    ctaLink: "/pastries"
+    ctaLink: "/african-foods"
   }
 ];
 
@@ -162,7 +156,7 @@ export default function Home() {
               description: "Imported groceries and cultural goods",
               icon: <Globe className="h-8 w-8 text-amber-600" />,
               image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-              link: "/pastries",
+              link: "/african-foods",
               buttonText: "Shop Goods"
             }
           ].map((service, index) => (
