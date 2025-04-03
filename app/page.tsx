@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Phone, MapPin, Mail, Cake, Shirt, Globe, ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
 import Image from "next/image";
+import './globals.css'
 
 const slides = [
   {
@@ -75,10 +76,11 @@ export default function Home() {
                   {slide.subtitle}
                 </p>
                 <div className="flex justify-center gap-4 animate-fadeIn delay-200">
-<Button asChild size="lg" className="bg-[#d97706] hover:bg-[#b45309] text-white" // Using amber-600/700 hex codes directly
->
+<Button asChild size="lg" 
+ variant="outline"
+ className="text-white bg-yellow-600 border-white hover:bg-white/10" >
   <Link href={slide.ctaLink} passHref legacyBehavior>
-    <a className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md">
+    <a className="inline-flex items-center justify-center text-white bg-yellow-600 border-white hover:bg-white/10 gap-2 px-4 py-2 rounded-md">
       {slide.cta}
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
@@ -194,7 +196,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4">{service.description}</p>
                 <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white">
                   <Link href={service.link} passHref legacyBehavior>
-                    <a className="block w-full">{service.buttonText}</a>
+                    <a className="block w-full bg-amber-600 hover:bg-amber-700 text-white">{service.buttonText}</a>
                   </Link>
                 </Button>
               </div>
