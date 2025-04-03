@@ -6,7 +6,6 @@ import { Phone, MapPin, Mail, Cake, Shirt, Globe, ChevronLeft, ChevronRight, Arr
 import Image from "next/image";
 
 const slides = [
- 
   {
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80",
     title: "Traditional African Pastries",
@@ -32,8 +31,10 @@ const slides = [
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 5000);
@@ -48,6 +49,8 @@ export default function Home() {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
+  if (!isMounted) return null;
+
   return (
     <div className="bg-amber-50">
       {/* Hero Slideshow */}
@@ -55,7 +58,7 @@ export default function Home() {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             style={{
               backgroundImage: `url(${slide.image})`,
               backgroundSize: 'cover',
@@ -72,13 +75,26 @@ export default function Home() {
                   {slide.subtitle}
                 </p>
                 <div className="flex justify-center gap-4 animate-fadeIn delay-200">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-amber-600 hover:bg-amber-700 text-white"
-                  >
-                    <Link href={slide.ctaLink}>{slide.cta}</Link>
-                  </Button>
+<Button asChild size="lg" className="bg-[#d97706] hover:bg-[#b45309] text-white" // Using amber-600/700 hex codes directly
+>
+  <Link href={slide.ctaLink} passHref legacyBehavior>
+    <a className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md">
+      {slide.cta}
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        className="h-4 w-4" 
+        viewBox="0 0 20 20" 
+        fill="currentColor"
+      >
+        <path 
+          fillRule="evenodd" 
+          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" 
+          clipRule="evenodd" 
+        />
+      </svg>
+    </a>
+  </Link>
+</Button>
                   <Button
                     asChild
                     size="lg"
@@ -96,21 +112,21 @@ export default function Home() {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all"
           aria-label="Previous slide"
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all"
           aria-label="Next slide"
         >
           <ChevronRight className="h-6 w-6" />
         </button>
 
         {/* Pagination Dots */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -122,7 +138,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 animate-bounce">
           <div className="flex flex-col items-center">
             <span className="text-white text-sm mb-1">Scroll Down</span>
             <ArrowDown className="h-6 w-6 text-white" />
@@ -167,6 +183,7 @@ export default function Home() {
                   alt={service.title}
                   fill
                   className="object-cover"
+                  priority={index < 2} // Prioritize loading first two images
                 />
               </div>
               <div className="p-6 text-center">
@@ -175,12 +192,9 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <Button
-                  asChild
-                  className="bg-amber-600 hover:bg-amber-700 text-white"
-                >
-                  <Link href={service.link}>
-                    {service.buttonText}
+                <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white">
+                  <Link href={service.link} passHref legacyBehavior>
+                    <a className="block w-full">{service.buttonText}</a>
                   </Link>
                 </Button>
               </div>
@@ -201,7 +215,9 @@ export default function Home() {
                 Hamilton, Ontario, Canada
               </p>
               <Button variant="link" className="text-amber-600 mt-2" asChild>
-                <Link href="https://maps.google.com">Get Directions</Link>
+                <Link href="https://maps.google.com" passHref legacyBehavior>
+                  <a target="_blank" rel="noopener noreferrer">Get Directions</a>
+                </Link>
               </Button>
             </div>
             <div className="text-center p-6 bg-amber-50 rounded-lg shadow-sm">
